@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, DECIMAL, DATETIME
+from sqlalchemy import Column, ForeignKey, Integer, String, DECIMAL, DATETIME, Float
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from ..dependencies.database import Base
@@ -7,8 +7,7 @@ from ..dependencies.database import Base
 class Resource(Base):
     __tablename__ = "resources"
 
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    item = Column(String(100), unique=True, nullable=False)
-    amount = Column(Integer, index=True, nullable=False, server_default='0.0')
-
-    recipes = relationship("Recipe", back_populates="resource")
+    resource_id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(100), nullable=False, unique=True)  # Ensure no duplicate names
+    amount = Column(Float, nullable=False)  # Quantity of the resource
+    unit = Column(String(50), nullable=False)  # Measurement unit (e.g., kg, liters)
