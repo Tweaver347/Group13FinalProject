@@ -75,3 +75,7 @@ def delete(db: Session, promotion_id: int):
         error = str(e.__dict__.get("orig", e))
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+def read_all(db: Session):
+    return db.query(model.Promotion).filter(model.Promotion.active == 1).all()

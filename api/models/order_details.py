@@ -12,7 +12,9 @@ class OrderDetail(Base):
     quantity = Column(Integer, nullable=False)
     price_per_item = Column(Float, nullable=False)
     subtotal = Column(Float, nullable=False)
+    sandwich_id = Column(Integer, ForeignKey("sandwiches.id"))
 
     # Relationships
     order = relationship("Order", back_populates="order_details")
     menu_item = relationship("MenuItem", back_populates="order_details")
+    sandwich = relationship("Sandwich", back_populates="order_details")
