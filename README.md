@@ -1,3 +1,6 @@
+Presentation Video: https://www.youtube.com/watch?v=XYtfxyAmlRw 
+
+
 ### Installing necessary packages:  
 * `pip install fastapi`
 * `pip install "uvicorn[standard]"`  
